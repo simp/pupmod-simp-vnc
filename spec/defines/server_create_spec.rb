@@ -20,7 +20,7 @@ describe 'vnc::server::create' do
       'log_on_success' => 'HOST PID DURATION',
       'user'           => 'nobody',
       'server'         => '/usr/bin/Xvnc',
-      'server_args'    => "-inetd -localhost -audit 4 -s 15 -query localhost -once -SecurityTypes None -desktop awesome_vnc -geometry 1280x1024 -depth 16",
+      'server_args'    => "-inetd -localhost -audit 4 -s 15 -query localhost -NeverShared -once -SecurityTypes None -desktop awesome_vnc -geometry 1280x1024 -depth 16",
       'disable'        => 'no',
       'only_from'      => '127.0.0.1',
       'port'           => 5900

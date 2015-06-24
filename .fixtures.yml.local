@@ -1,0 +1,17 @@
+---
+fixtures:
+  symlinks:
+    vnc: "#{source_dir}"
+    augeasproviders_core: "#{source_dir}/../augeasproviders_core"
+    augeasproviders_grub: "#{source_dir}/../augeasproviders_grub"
+    common: "#{source_dir}/../common"
+    concat: "#{source_dir}/../concat"
+    functions: "#{source_dir}/../functions"
+    iptables: "#{source_dir}/../iptables"
+    oddjob : "#{source_dir}/../oddjob"
+    pam: "#{source_dir}/../pam"
+    rsync: "#{source_dir}/../rsync"
+    stdlib: "#{source_dir}/../stdlib"
+    sudo: "#{source_dir}/../sudo"
+    xinetd: "#{source_dir}/../xinetd"
+    xwindows: "#{source_dir}/../xwindows"

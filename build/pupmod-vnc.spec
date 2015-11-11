@@ -1,13 +1,14 @@
 Summary: VNC Puppet Module
 Name: pupmod-vnc
 Version: 4.1.0
-Release: 3
+Release: 4
 License: Apache License, Version 2.0
 Group: Applications/System
 Source: %{name}-%{version}-%{release}.tar.gz
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: pupmod-auditd >= 4.1.0-3
 Requires: pupmod-common >= 4.2.0
+Requires: pupmod-simplib >= 1.0.0-0
 Requires: puppetlabs-stdlib >= 4.1.0-0
 Requires: pupmod-xinetd >= 2.1.0-0
 Requires: puppet >= 3.3.0
@@ -58,6 +59,9 @@ fi
 # Post uninstall stuff
 
 %changelog
+* Mon Nov 09 2015 Chris Tessmer <chris.tessmer@onypoint.com> - 4.1.0-4
+- migration to simplib and simpcat (lib/ only)
+
 * Mon Apr 06 2015 Trevor Vaughan <tvaughan@onyxpoint.com> - 4.1.0-3
 - Updated to ensure that a banner is not printed since this breaks many
   clients.

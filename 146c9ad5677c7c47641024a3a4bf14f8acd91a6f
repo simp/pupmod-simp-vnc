@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac7a964_ae4f9691",
+        "filename": ".fixtures.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1005194
+      },
+      "writtenOn": "2015-11-12T13:30:59Z",
+      "side": 1,
+      "message": "simpcat",
+      "revId": "146c9ad5677c7c47641024a3a4bf14f8acd91a6f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

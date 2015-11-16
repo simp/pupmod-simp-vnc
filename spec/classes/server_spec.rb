@@ -11,7 +11,7 @@ describe 'vnc::server' do
         it { should create_class('vnc::server') }
         it { should compile.with_all_deps }
 
-        it { should contain_class('common') }
+        it { should contain_class('simplib') }
         it { should contain_class('xinetd') }
         it { should contain_class('xwindows') }
 

@@ -1,17 +1,18 @@
 ---
 fixtures:
   repositories:
-    augeasproviders_core: "git://github.com/simp/augeasproviders_core"
-    augeasproviders_grub: "git://github.com/simp/augeasproviders_grub"
-    simplib              : "git://github.com/simp/pupmod-simp-simplib"
-    simpcat              : "git://github.com/simp/pupmod-simp-concat"
-    iptables            : "git://github.com/simp/pupmod-simp-iptables"
-    oddjob              : "git://github.com/simp/pupmod-simp-oddjob"
-    pam                 : "git://github.com/simp/pupmod-simp-pam"
-    rsync               : "git://github.com/simp/pupmod-simp-rsync"
-    stdlib              : "git://github.com/simp/puppetlabs-stdlib"
-    sudo                : "git://github.com/simp/pupmod-simp-sudo"
-    xinetd              : "git://github.com/simp/pupmod-simp-xinetd"
-    xwindows            : "git://github.com/simp/pupmod-simp-xwindows"
+    compliance:           'https://github.com/trevor-vaughan/pupmod-compliance.git'
+    augeasproviders_core: 'https://httpshub.com/simp/augeasproviders_core.git'
+    augeasproviders_grub: 'https://httpshub.com/simp/augeasproviders_grub.git'
+    simplib              : 'https://httpshub.com/simp/pupmod-simp-simplib.git'
+    simpcat              : 'https://httpshub.com/simp/pupmod-simp-concat.git'
+    iptables            : 'https://httpshub.com/simp/pupmod-simp-iptables.git'
+    oddjob              : 'https://httpshub.com/simp/pupmod-simp-oddjob.git'
+    pam                 : 'https://httpshub.com/simp/pupmod-simp-pam.git'
+    rsync               : 'https://httpshub.com/simp/pupmod-simp-rsync.git'
+    stdlib              : 'https://httpshub.com/simp/puppetlabs-stdlib.git'
+    sudo                : 'https://httpshub.com/simp/pupmod-simp-sudo.git'
+    xinetd              : 'https://httpshub.com/simp/pupmod-simp-xinetd.git'
+    xwindows            : 'https://httpshub.com/simp/pupmod-simp-xwindows.git'
   symlinks:
-    vnc: "#{source_dir}"
+    vnc: '#{source_dir}'

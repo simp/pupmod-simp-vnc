@@ -1,16 +1,17 @@
----
-fixtures:
-  symlinks:
-    vnc: "#{source_dir}"
-    augeasproviders_core: "#{source_dir}/../augeasproviders_core"
-    augeasproviders_grub: "#{source_dir}/../augeasproviders_grub"
-    concat: "#{source_dir}/../concat"
-    simplib: "#{source_dir}/../simplib"
-    iptables: "#{source_dir}/../iptables"
-    oddjob : "#{source_dir}/../oddjob"
-    pam: "#{source_dir}/../pam"
-    rsync: "#{source_dir}/../rsync"
-    stdlib: "#{source_dir}/../stdlib"
-    sudo: "#{source_dir}/../sudo"
-    xinetd: "#{source_dir}/../xinetd"
-    xwindows: "#{source_dir}/../xwindows"
+--- 
+  fixtures: 
+    symlinks: 
+      augeasproviders_core: "#{source_dir}/../augeasproviders_core"
+      augeasproviders_grub: "#{source_dir}/../augeasproviders_grub"
+      compliance: "#{source_dir}/../compliance"
+      iptables: "#{source_dir}/../iptables"
+      oddjob: "#{source_dir}/../oddjob"
+      pam: "#{source_dir}/../pam"
+      rsync: "#{source_dir}/../rsync"
+      simpcat: "#{source_dir}/../simpcat"
+      simplib: "#{source_dir}/../simplib"
+      stdlib: "#{source_dir}/../stdlib"
+      sudo: "#{source_dir}/../sudo"
+      vnc: "#{source_dir}"
+      xinetd: "#{source_dir}/../xinetd"
+      xwindows: "#{source_dir}/../xwindows"

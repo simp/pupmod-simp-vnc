@@ -1,18 +1,24 @@
 ---
 fixtures:
   repositories:
-    compliance:           'https://github.com/trevor-vaughan/pupmod-compliance.git'
-    augeasproviders_core: 'https://httpshub.com/simp/augeasproviders_core.git'
-    augeasproviders_grub: 'https://httpshub.com/simp/augeasproviders_grub.git'
-    simplib              : 'https://httpshub.com/simp/pupmod-simp-simplib.git'
-    simpcat              : 'https://httpshub.com/simp/pupmod-simp-concat.git'
-    iptables            : 'https://httpshub.com/simp/pupmod-simp-iptables.git'
-    oddjob              : 'https://httpshub.com/simp/pupmod-simp-oddjob.git'
-    pam                 : 'https://httpshub.com/simp/pupmod-simp-pam.git'
-    rsync               : 'https://httpshub.com/simp/pupmod-simp-rsync.git'
-    stdlib              : 'https://httpshub.com/simp/puppetlabs-stdlib.git'
-    sudo                : 'https://httpshub.com/simp/pupmod-simp-sudo.git'
-    xinetd              : 'https://httpshub.com/simp/pupmod-simp-xinetd.git'
-    xwindows            : 'https://httpshub.com/simp/pupmod-simp-xwindows.git'
+    augeasproviders_core:
+      repo:   'https://github.com/simp/augeasproviders_core'
+      branch: 'simp-master'
+    augeasproviders_grub:
+      repo:   'https://github.com/simp/augeasproviders_grub'
+      branch: 'simp-master'
+    compliance_markup:    'https://github.com/simp/pupmod-simp-compliance_markup'
+    iptables:             'https://github.com/simp/pupmod-simp-iptables'
+    oddjob:               'https://github.com/simp/pupmod-simp-oddjob'
+    pam:                  'https://github.com/simp/pupmod-simp-pam'
+    rsync:                'https://github.com/simp/pupmod-simp-rsync'
+    simpcat:              'https://github.com/simp/pupmod-simp-simpcat'
+    simplib:              'https://github.com/simp/pupmod-simp-simplib'
+    stdlib:
+      repo:   'https://github.com/simp/puppetlabs-stdlib'
+      branch: 'simp-master'
+    sudo:                 'https://github.com/simp/pupmod-simp-sudo'
+    xinetd:               'https://github.com/simp/pupmod-simp-xinetd'
+    xwindows:             'https://github.com/simp/pupmod-simp-xwindows'
   symlinks:
     vnc: '#{source_dir}'

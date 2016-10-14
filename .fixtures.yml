@@ -2,23 +2,43 @@
 fixtures:
   repositories:
     augeasproviders_core:
-      repo:   'https://github.com/simp/augeasproviders_core'
-      branch: 'simp-master'
+      branch: 5.X
+      repo: https://github.com/simp/augeasproviders_core
     augeasproviders_grub:
-      repo:   'https://github.com/simp/augeasproviders_grub'
-      branch: 'simp-master'
-    compliance_markup:    'https://github.com/simp/pupmod-simp-compliance_markup'
-    iptables:             'https://github.com/simp/pupmod-simp-iptables'
-    oddjob:               'https://github.com/simp/pupmod-simp-oddjob'
-    pam:                  'https://github.com/simp/pupmod-simp-pam'
-    rsync:                'https://github.com/simp/pupmod-simp-rsync'
-    simpcat:              'https://github.com/simp/pupmod-simp-simpcat'
-    simplib:              'https://github.com/simp/pupmod-simp-simplib'
+      branch: 5.X
+      repo: https://github.com/simp/augeasproviders_grub
+    compliance_markup:
+      repo: https://github.com/simp/pupmod-simp-compliance_markup
+      branch: 5.X
+    iptables:
+      repo: https://github.com/simp/pupmod-simp-iptables
+      branch: 5.X
+    oddjob:
+      repo: https://github.com/simp/pupmod-simp-oddjob
+      branch: 5.X
+    pam:
+      repo: https://github.com/simp/pupmod-simp-pam
+      branch: 5.X
+    rsync:
+      repo: https://github.com/simp/pupmod-simp-rsync
+      branch: 5.X
+    simpcat:
+      repo: https://github.com/simp/pupmod-simp-simpcat
+      branch: 5.X
+    simplib:
+      repo: https://github.com/simp/pupmod-simp-simplib
+      branch: 5.X
     stdlib:
-      repo:   'https://github.com/simp/puppetlabs-stdlib'
-      branch: 'simp-master'
-    sudo:                 'https://github.com/simp/pupmod-simp-sudo'
-    xinetd:               'https://github.com/simp/pupmod-simp-xinetd'
-    xwindows:             'https://github.com/simp/pupmod-simp-xwindows'
+      branch: 5.X
+      repo: https://github.com/simp/puppetlabs-stdlib
+    sudo:
+      repo: https://github.com/simp/pupmod-simp-sudo
+      branch: 5.X
+    xinetd:
+      repo: https://github.com/simp/pupmod-simp-xinetd
+      branch: 5.X
+    xwindows:
+      repo: https://github.com/simp/pupmod-simp-xwindows
+      branch: 5.X
   symlinks:
-    vnc: '#{source_dir}'
+    vnc: "#{source_dir}"

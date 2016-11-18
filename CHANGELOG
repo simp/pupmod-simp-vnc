@@ -1,3 +1,6 @@
+* Mon Nov 21 2016 Chris Tessmer <chris.tessmer@onyxpoint.com> - 4.1.2-0
+- Minor cleanup
+
 * Mon Nov 09 2015 Chris Tessmer <chris.tessmer@onypoint.com> - 4.1.0-4
 - migration to simplib and simpcat (lib/ only)
 

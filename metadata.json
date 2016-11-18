@@ -1,7 +1,7 @@
 {
   "name": "simp-vnc",
   "version": "4.1.1",
-  "author": "simp",
+  "author": "SIMP Team",
   "summary": "Manages VNC",
   "license": "Apache-2.0",
   "source": "https://github.com/simp/pupmod-simp-vnc",

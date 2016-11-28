@@ -48,7 +48,7 @@ define vnc::server::create (
     log_on_success => 'HOST PID DURATION',
     user           => 'nobody',
     server         => '/usr/bin/Xvnc',
-    server_args    => "-inetd -localhost -audit 4 -s $screensaver_timeout -query localhost -NeverShared -once -SecurityTypes None -desktop $name -geometry $geometry -depth $depth",
+    server_args    => "-inetd -localhost -audit 4 -s ${screensaver_timeout} -query localhost -NeverShared -once -SecurityTypes None -desktop ${name} -geometry ${geometry} -depth ${depth}",
     disable        => 'no',
     only_from      => '127.0.0.1',
     port           => $port

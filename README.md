@@ -42,7 +42,7 @@ Ports used by default for VNC Server:
 
 ### Setup Requirements
 
-`simp/vnc` requires the `simp/simplib`,`simp/xinetd` and `simp/xwindows` modules.
+`simp/vnc` requires the `simp/simplib`,`simp/xinetd` and `simp/gdm` modules.
 
 ### Beginning with SIMP SSSD
 

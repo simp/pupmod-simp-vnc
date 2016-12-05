@@ -13,7 +13,7 @@
 class vnc::server {
   include 'simplib'
   include 'xinetd'
-  include 'xwindows::gdm'
+  include 'gdm'
 
   # Some useful defaults
   vnc::server::create { 'vnc_standard':
@@ -37,7 +37,7 @@ class vnc::server {
   package { 'tigervnc-server': ensure => 'latest' }
 
   # Enable XDMCP queries so that VNC works properly.
-  xwindows::gdm::set { 'enable_xdmcp':
+  gdm::set { 'enable_xdmcp':
     section => 'xdmcp',
     key     => 'Enable',
     value   => true

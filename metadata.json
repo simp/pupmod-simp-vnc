@@ -1,6 +1,6 @@
 {
   "name": "simp-vnc",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": "SIMP Team",
   "summary": "Manages VNC",
   "license": "Apache-2.0",
@@ -12,6 +12,10 @@
     "vnc"
   ],
   "dependencies": [
+    {
+      "name": "simp/gdm",
+      "version_requirement": ">= 6.0.0 < 7.0.0"
+    },
     {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">= 4.9.0 < 5.0.0"

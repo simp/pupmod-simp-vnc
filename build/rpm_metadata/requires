@@ -5,3 +5,5 @@ Requires: pupmod-simp-simplib >= 2.0.0-0
 Requires: pupmod-simp-simplib < 3.0.0-0
 Requires: pupmod-simp-xinetd < 4.0.0-0
 Requires: pupmod-simp-xinetd >= 3.0.0-0
+Requires: pupmod-simp-gdm >= 6.0.0-0
+Requires: pupmod-simp-gdm < 7.0.0-0

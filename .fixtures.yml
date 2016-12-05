@@ -7,6 +7,7 @@ fixtures:
     augeasproviders_grub:
       repo: https://github.com/simp/augeasproviders_grub
       branch: simp-master
+    gdm: https://github.com/simp/pupmod-simp-gdm
     iptables: https://github.com/simp/pupmod-simp-iptables
     oddjob: https://github.com/simp/pupmod-simp-oddjob
     pam: https://github.com/simp/pupmod-simp-pam
@@ -18,6 +19,5 @@ fixtures:
       branch: simp-master
     sudo: https://github.com/simp/pupmod-simp-sudo
     xinetd: https://github.com/simp/pupmod-simp-xinetd
-    xwindows: https://github.com/simp/pupmod-simp-xwindows
   symlinks:
     vnc: "#{source_dir}"

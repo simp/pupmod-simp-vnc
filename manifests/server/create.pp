@@ -30,32 +30,30 @@
 # * Trevor Vaughan <tvaughan@onyxpoint.com>
 #
 define vnc::server::create (
-  $port,
-  $geometry = '800x600',
-  $depth = '16',
-  $screensaver_timeout = '15'
+  Integer $port,
+  String $geometry             = '800x600',
+  Integer $depth               = 16,
+  Integer $screensaver_timeout = 15
 ) {
+
+  validate_port($port)
+  validate_re($geometry, '^\d+x\d+$')
 
   include 'xinetd'
 
   xinetd::service { $name:
-    banner         => 'no_banner_allowed',
-    flags          => 'REUSE',
+    flags          => ['REUSE'],
     protocol       => 'tcp',
     socket_type    => 'stream',
     x_wait         => 'no',
     x_type         => 'UNLISTED',
-    log_on_success => 'HOST PID DURATION',
+    log_on_success => ['HOST', 'PID', 'DURATION'],
     user           => 'nobody',
     server         => '/usr/bin/Xvnc',
     server_args    => "-inetd -localhost -audit 4 -s ${screensaver_timeout} -query localhost -NeverShared -once -SecurityTypes None -desktop ${name} -geometry ${geometry} -depth ${depth}",
     disable        => 'no',
-    only_from      => '127.0.0.1',
+    trusted_nets  => ['127.0.0.1'],
     port           => $port
   }
 
-  validate_port($port)
-  validate_integer($depth)
-  validate_integer($screensaver_timeout)
-  validate_re($geometry, '^\d+x\d+$')
 }

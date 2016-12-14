@@ -1,6 +1,6 @@
 {
   "name": "simp-vnc",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "author": "SIMP Team",
   "summary": "Manages VNC",
   "license": "Apache-2.0",
@@ -22,11 +22,11 @@
     },
     {
       "name": "simp/simplib",
-      "version_requirement": ">= 2.0.0 < 3.0.0"
+      "version_requirement": ">= 2.1.0 < 3.0.0"
     },
     {
       "name": "simp/xinetd",
-      "version_requirement": ">= 3.0.0 < 4.0.0"
+      "version_requirement": ">= 4.0.0 < 5.0.0"
     }
   ],
   "operatingsystem_support": [

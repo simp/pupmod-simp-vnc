@@ -3,15 +3,15 @@ fixtures:
   repositories:
     gdm:
       repo: https://github.com/simp/pupmod-simp-gdm
-      tag: 6.0.0
+      tag: master
     simplib:
       repo: https://github.com/simp/pupmod-simp-simplib
-      tag: 3.1.0
+      tag: master
     stdlib:
       repo: https://github.com/simp/puppetlabs-stdlib
-      tag: 4.13.1
+      tag: master
     xinetd:
       repo: https://github.com/simp/pupmod-simp-xinetd
-      tag: 4.0.0
+      tag: master
   symlinks:
     vnc: "#{source_dir}"

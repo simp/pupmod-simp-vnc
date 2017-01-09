@@ -31,7 +31,7 @@
 #
 define vnc::server::create (
   Integer $port,
-  String $geometry             = '800x600',
+  String  $geometry            = '800x600',
   Integer $depth               = 16,
   Integer $screensaver_timeout = 15
 ) {
@@ -52,7 +52,7 @@ define vnc::server::create (
     server         => '/usr/bin/Xvnc',
     server_args    => "-inetd -localhost -audit 4 -s ${screensaver_timeout} -query localhost -NeverShared -once -SecurityTypes None -desktop ${name} -geometry ${geometry} -depth ${depth}",
     disable        => 'no',
-    trusted_nets  => ['127.0.0.1'],
+    trusted_nets   => ['127.0.0.1'],
     port           => $port
   }
 

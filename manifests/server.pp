@@ -11,7 +11,6 @@
 # * Trevor Vaughan <tvaughan@onyxpoint.com>
 #
 class vnc::server {
-  include 'simplib'
   include 'xinetd'
   include 'gdm'
 

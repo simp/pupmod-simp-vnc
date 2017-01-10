@@ -1,3 +1,7 @@
+* Wed Jan 02 2017 Chris Tessmer <chris.tessmer@onyxpoint.com> - 6.0.1-0
+- Removed unecessary code and deps after major dep releases
+- Locked versions of all build and test deps
+
 * Wed Dec 14 2016 Liz Nemsick <lnemsick.simp@gmail.com> - 6.0.0-0
 - Use simp_options module for global catalysts
 - Use strong typed parameters

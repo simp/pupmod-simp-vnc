@@ -1,23 +1,17 @@
 ---
 fixtures:
   repositories:
-    augeasproviders_core:
-      repo: https://github.com/simp/augeasproviders_core
-      branch: simp-master
-    augeasproviders_grub:
-      repo: https://github.com/simp/augeasproviders_grub
-      branch: simp-master
-    gdm: https://github.com/simp/pupmod-simp-gdm
-    iptables: https://github.com/simp/pupmod-simp-iptables
-    oddjob: https://github.com/simp/pupmod-simp-oddjob
-    pam: https://github.com/simp/pupmod-simp-pam
-    rsync: https://github.com/simp/pupmod-simp-rsync
-    simpcat: https://github.com/simp/pupmod-simp-simpcat
-    simplib: https://github.com/simp/pupmod-simp-simplib
+    gdm:
+      repo: https://github.com/simp/pupmod-simp-gdm
+      ref: 6.0.0
+    simplib:
+      repo: https://github.com/simp/pupmod-simp-simplib
+      ref: 3.1.0
     stdlib:
       repo: https://github.com/simp/puppetlabs-stdlib
-      branch: master
-    sudo: https://github.com/simp/pupmod-simp-sudo
-    xinetd: https://github.com/simp/pupmod-simp-xinetd
+      ref: 4.13.1
+    xinetd:
+      repo: https://github.com/simp/pupmod-simp-xinetd
+      ref: 4.0.0
   symlinks:
     vnc: "#{source_dir}"

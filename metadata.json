@@ -14,7 +14,7 @@
   "dependencies": [
     {
       "name": "simp/gdm",
-      "version_requirement": ">= 6.0.0 < 7.0.0"
+      "version_requirement": ">= 7.0.0 < 8.0.0"
     },
     {
       "name": "puppetlabs/stdlib",

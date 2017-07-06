@@ -1,3 +1,6 @@
+* Thu Jul 06 2017 Liz Nemsick <lnemsick.simp@gmail.com> - 6.0.2-0
+- Confine puppet version in metadata.json
+
 * Wed Jan 02 2017 Chris Tessmer <chris.tessmer@onyxpoint.com> - 6.0.1-0
 - Removed unecessary code and deps after major dep releases
 - Locked versions of all build and test deps

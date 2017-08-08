@@ -1,17 +1,9 @@
 ---
 fixtures:
   repositories:
-    gdm:
-      repo: https://github.com/simp/pupmod-simp-gdm
-      ref: 6.0.0
-    simplib:
-      repo: https://github.com/simp/pupmod-simp-simplib
-      ref: 3.1.0
-    stdlib:
-      repo: https://github.com/simp/puppetlabs-stdlib
-      ref: 4.13.1
-    xinetd:
-      repo: https://github.com/simp/pupmod-simp-xinetd
-      ref: 4.0.0
+    gdm: https://github.com/simp/pupmod-simp-gdm
+    simplib: https://github.com/simp/pupmod-simp-simplib
+    stdlib: https://github.com/simp/puppetlabs-stdlib
+    xinetd: https://github.com/simp/pupmod-simp-xinetd
   symlinks:
     vnc: "#{source_dir}"

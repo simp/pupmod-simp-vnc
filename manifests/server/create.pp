@@ -42,7 +42,8 @@ define vnc::server::create (
   include 'xinetd'
 
   xinetd::service { $name:
-    flags          => ['REUSE'],
+    banner         => '/dev/null',
+    flags          => ['REUSE','IPv4'],
     protocol       => 'tcp',
     socket_type    => 'stream',
     x_wait         => 'no',

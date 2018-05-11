@@ -18,7 +18,8 @@ describe 'vnc::server::create' do
 
         it do
           should contain_xinetd__service('awesome_vnc').with({
-            'flags'          => ['REUSE'],
+            'banner'         => '/dev/null',
+            'flags'          => ['REUSE','IPv4'],
             'protocol'       => 'tcp',
             'socket_type'    => 'stream',
             'x_wait'         => 'no',

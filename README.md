@@ -1,22 +1,15 @@
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html) [![Build Status](https://travis-ci.org/simp/pupmod-simp-vnc.svg)](https://travis-ci.org/simp/pupmod-simp-vnc) [![SIMP compatibility](https://img.shields.io/badge/SIMP%20compatibility-4.2.*%2F5.1.*-orange.svg)](https://img.shields.io/badge/SIMP%20compatibility-4.2.*%2F5.1.*-orange.svg)
+[![License](https://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/73/badge)](https://bestpractices.coreinfrastructure.org/projects/73)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/simp/vnc.svg)](https://forge.puppetlabs.com/simp/vnc)
+[![Puppet Forge Downloads](https://img.shields.io/puppetforge/dt/simp/vnc.svg)](https://forge.puppetlabs.com/simp/vnc)
+[![Build Status](https://travis-ci.org/simp/pupmod-simp-vnc.svg)](https://travis-ci.org/simp/pupmod-simp-vnc)
 
 #### Table of Contents
 
-1. [Overview](#overview)
-2. [Module Description - A Puppet module for managing vnc](#module-description)
-3. [Setup - The basics of getting started with pupmod-simp-vnc](#setup)
-    * [What pupmod-simp-vnc affects](#what-simp-vnc-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with pupmod-simp-vnc](#beginning-with-simp-vnc)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
-
 ## This is a SIMP module
 This module is a component of the
-[System Integrity Management Platform](https://github.com/NationalSecurityAgency/SIMP),
-a compliance-management framework built on Puppet.
+[System Integrity Management Platform](https://simp-project.com) a
+compliance-management framework built on Puppet.
 
 If you find any issues, they can be submitted to our
 [JIRA](https://simp-project.atlassian.net/).
@@ -26,7 +19,8 @@ and visit our [developer wiki](https://simp-project.atlassian.net/wiki/display/S
 
 ## Module Description
 
-This module installs the tigervnc client and server, and can create a VNC Server Session
+This module installs the tigervnc client and server, and can create VNC Server
+Sessions
 
 ## Setup
 
@@ -40,15 +34,25 @@ Ports used by default for VNC Server:
 * 5902 (800x600)
 * 5903 (1280x1024)
 
-### Setup Requirements
+### Beginning with VNC
 
-`simp/vnc` requires the `simp/simplib`,`simp/xinetd` and `simp/gdm` modules.
+#### Client Installation
 
-### Beginning with SIMP SSSD
+To install the tigervnc client, just include `vnc::client`
 
-To install tigervnc, just include `vnc::client`
+#### Server Installation
 
 To create a basic VNC server with default ports, include `vnc::server`
+
+NOTE: You **MUST** set the following in Hiera to enable XDMCP. VNC will not
+work without it.
+
+```
+---
+gdm::settings:
+  xdmcp:
+    Enable: true
+```
 
 ## Usage
 
@@ -63,26 +67,12 @@ vnc::server::create {'myconn':
   screensaver_timeout => '30',
 ```
 
-## Reference
+## Development
 
-### Public Classes
-* vnc
-* vnc::client
-* vnc::server
-* vnc::server::create
+Please read our [Contribution Guide](http://simp.readthedocs.io/en/master/contributors_guide/index.html)
+and visit our [Developer Wiki](https://simp-project.atlassian.net/wiki/display/SD/SIMP+Development+Home)
 
-## Limitations
+If you find any issues, they can be submitted to our
+[JIRA](https://simp-project.atlassian.net).
 
-This module is only designed to work in RHEL or CentOS 6 and 7. Any other
-operating systems have not been tested and results cannot be guaranteed.
-
-# Development
-
-Please see the
-[SIMP Contribution Guidelines](https://simp-project.atlassian.net/wiki/display/SD/Contributing+to+SIMP).
-
-General developer documentation can be found on
-[Confluence](https://simp-project.atlassian.net/wiki/display/SD/SIMP+Development+Home).
-Visit the project homepage on [GitHub](https://simp-project.com),
-chat with us on our [HipChat](https://simp-project.hipchat.com/),
-and look at our issues on  [JIRA](https://simp-project.atlassian.net/).
+[System Integrity Management Platform](https://simp-project.com)

@@ -37,8 +37,6 @@ describe 'vnc::server' do
         end
 
         it { should contain_package('tigervnc-server') }
-        it { should create_gdm__set('enable_xdmcp') }
-
       end
     end
   end

@@ -2,6 +2,7 @@
 fixtures:
   repositories:
     gdm: https://github.com/simp/pupmod-simp-gdm
+    dconf: https://github.com/simp/pupmod-simp-dconf
     simplib: https://github.com/simp/pupmod-simp-simplib
     stdlib: https://github.com/simp/puppetlabs-stdlib
     xinetd: https://github.com/simp/pupmod-simp-xinetd

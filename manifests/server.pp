@@ -1,14 +1,15 @@
+# Installs vnc-server, includes GDM for configuration, and sets up some default
+# vnc sessions.
 #
-# == Class: vnc::server
+# NOTE: You *MUST* set the following in Hiera to enable XDMCP. VNC will not
+# work without it.
 #
-# Installs vnc-server, sets up necessary gdm configuration, and sets up some
-# default vnc sessions.
-#
-# == Parameters
-#
-# == Authors
-#
-# * Trevor Vaughan <tvaughan@onyxpoint.com>
+# ```
+# ---
+# gdm::settings:
+#   xdmcp:
+#     Enable: true
+# ```
 #
 class vnc::server {
   include 'xinetd'
@@ -34,11 +35,4 @@ class vnc::server {
   }
 
   package { 'tigervnc-server': ensure => 'latest' }
-
-  # Enable XDMCP queries so that VNC works properly.
-  gdm::set { 'enable_xdmcp':
-    section => 'xdmcp',
-    key     => 'Enable',
-    value   => true
-  }
 }

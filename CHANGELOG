@@ -1,3 +1,9 @@
+* Fri Jun 22 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 7.0.0-0
+- Remove automatic setting of the XDMCP setting in GDM - BREAKING
+  - It was determined that this should be something that the administrator
+    should explicitly opt into by setting it in the GDM module settings via
+    Hiera since it has security implications
+
 * Tue May 08 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 6.0.3-0
 - Ensure that the default VNC sessions set the IPv4 flag
 - Ensure that the default VNC sessions set the banner to /dev/null

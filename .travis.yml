@@ -77,8 +77,8 @@ jobs:
       deploy:
         - provider: releases
           api_key:
-          skip_cleanup: true
             secure: "k8FgAGAouvAoGqmmTWVA0WB2qYw5p/bttYLLaJJth4uhaj16HWW4q08YTRKCidCSFZh3uenNowxGOcqXy8tleYS1zLOwsMCV27c7LCHiYLzU0nZe4BuKGd42IBYzplHMwSAQjKrMnLZUVECz37/42bRTRmLrhG203QumP6S3VY5NF7hman5TUt64wHPs7w+BI/cWrRaIezabJbsEEzWSklTGUGdNCJ6UP5v+trOUIUHNBwnwIf1HZaT+7aJrFIkJp1latu4xeVCUl/eVHH3HChh/brfuHkzwtsj0OWMQtgnAb4g9TjaPyBeCL7B6N+SbkZCMbrO7De9XFT+1TcsSVpsDgC2Vpm2GJ0Ethwjb4wOX4W8rQlOY2KOai+wceZGwy1xqqIppMtCJ5zgV2YinjSr/jWWtgCZbi7pwyugK9OzDuQ1vYlI/9qjBURl7sACBulPorW3ZCA81qoBbelfdrto/xx2/bMVDZvMJBSaesnn+EMapQ3S8k61nN+w0KiseFePO54M3fwXiJlMmrJbVt9LNz5Jsg42Z8hyKINHdgw22rA1MrniOrCTVQUMCqYE+6F03/8nLQoV8QFqwMzhwFIFp2gTqXWsIXoU+4ToFAHcTiRIasXrEG5BE9e1RoJDaF1C0Ko/OsM7pmk1IQw+ZEdZJae4FvFjQgVQWEN92YoQ="
+          skip_cleanup: true
           on:
             tags: true
             condition: '($SKIP_FORGE_PUBLISH != true)'

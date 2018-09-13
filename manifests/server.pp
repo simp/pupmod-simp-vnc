@@ -4,12 +4,13 @@
 # NOTE: You *MUST* set the following in Hiera to enable XDMCP. VNC will not
 # work without it.
 #
-# ```
-# ---
-# gdm::settings:
-#   xdmcp:
-#     Enable: true
-# ```
+# @example
+#   ---
+#   gdm::settings:
+#     xdmcp:
+#       Enable: true
+#
+# @author https://github.com/simp/pupmod-simp-vnc/graphs/contributors
 #
 class vnc::server {
   include 'xinetd'

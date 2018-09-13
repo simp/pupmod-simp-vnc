@@ -1,33 +1,25 @@
-#
-# == Define: vnc::server::create
-#
 # Create a new VNC Server Session
-#
-# == Parameters
 #
 # Desktop gets set to 'name'.
 #
-# [*port*]
+# @param port
 #   Port on which you wish to enable the VNC session
 #
-# [*geometry*]
+# @param geometry
 #   Resolution of your VNC session
 #
-# [*depth*]
+# @param depth
 #   Specifies the pixel depth, in bits, of the desktop
 #
-# [*screensaver_timeout*]
+# @param screensaver_timeout
 #   Time after which to disable the screensaver, in minutes.
 #
-# == Example
+# @example
+#    vnc::server::create { 'vnc_default':
+#      port => '5900'
+#    }
 #
-# vnc::server::create { 'vnc_default':
-#   port => '5900'
-# }
-#
-# == Authors
-#
-# * Trevor Vaughan <tvaughan@onyxpoint.com>
+# @author https://github.com/simp/pupmod-simp-vnc/graphs/contributors
 #
 define vnc::server::create (
   Integer $port,

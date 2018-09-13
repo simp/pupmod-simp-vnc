@@ -1,13 +1,6 @@
-#
-# == Class: vnc::client
-#
 # Makes sure the latests vnc package is installed.
 #
-# == Parameters
-#
-# == Authors
-#
-# * Trevor Vaughan <tvaughan@onyxpoint.com>
+# @author https://github.com/simp/pupmod-simp-vnc/graphs/contributors
 #
 class vnc::client {
   package { 'tigervnc': ensure => 'latest' }

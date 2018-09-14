@@ -1,13 +1,6 @@
-#
-# == Class: vnc
-#
 # This does nothing!
 #
-# == Parameters
-#
-# == Authors
-#
-# * Trevor Vaughan <tvaughan@onyxpoint.com>
+# @author https://github.com/simp/pupmod-simp-vnc/graphs/contributors
 #
 class vnc {
 

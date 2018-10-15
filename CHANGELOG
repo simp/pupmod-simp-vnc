@@ -1,9 +1,6 @@
 * Thu Sep 13 2018 Nick Miller <nick.miller@onyxpoint.com> - 7.0.0-0
 - Add support for Puppet 5 and OEL
 - Convert docs to yard tags and add reference.md
-- Added $package_ensure parameters to vnc::server and vnc::client
-  - Changed the packages from 'latest' to 'installed'
-  - Each will also respect `simp_options::package_ensure`
 
 * Fri Jun 22 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 7.0.0-0
 - Remove automatic setting of the XDMCP setting in GDM - BREAKING

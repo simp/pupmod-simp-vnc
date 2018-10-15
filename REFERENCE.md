@@ -23,18 +23,6 @@ This does nothing!
 
 Makes sure the latests vnc package is installed.
 
-#### Parameters
-
-The following parameters are available in the `vnc::client` class.
-
-##### `package_ensure`
-
-Data type: `String`
-
-The ensure status of tigervnc client package
-
-Default value: simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })
-
 ### vnc::server
 
 Installs vnc-server, includes GDM for configuration, and sets up some default
@@ -53,18 +41,6 @@ gdm::settings:
   xdmcp:
     Enable: true
 ```
-
-#### Parameters
-
-The following parameters are available in the `vnc::server` class.
-
-##### `package_ensure`
-
-Data type: `String`
-
-The ensure status of the tigervnc-server package
-
-Default value: simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })
 
 ## Defined types
 

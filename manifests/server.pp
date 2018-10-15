@@ -10,13 +10,9 @@
 #     xdmcp:
 #       Enable: true
 #
-# @param package_ensure The ensure status of the tigervnc-server package
-#
 # @author https://github.com/simp/pupmod-simp-vnc/graphs/contributors
 #
-class vnc::server (
-  String $package_ensure = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' }),
-) {
+class vnc::server {
   include 'xinetd'
   include 'gdm'
 
@@ -39,7 +35,5 @@ class vnc::server (
     depth    => 16
   }
 
-  package { 'tigervnc-server':
-    ensure => $package_ensure
-  }
+  package { 'tigervnc-server': ensure => 'latest' }
 }

@@ -14,9 +14,6 @@ compliance-management framework built on Puppet.
 If you find any issues, they can be submitted to our
 [JIRA](https://simp-project.atlassian.net/).
 
-Please read our [Contribution Guide](https://simp-project.atlassian.net/wiki/display/SD/Contributing+to+SIMP)
-and visit our [developer wiki](https://simp-project.atlassian.net/wiki/display/SD/SIMP+Development+Home).
-
 ## Module Description
 
 This module installs the tigervnc client and server, and can create VNC Server
@@ -69,10 +66,4 @@ vnc::server::create {'myconn':
 
 ## Development
 
-Please read our [Contribution Guide](http://simp.readthedocs.io/en/master/contributors_guide/index.html)
-and visit our [Developer Wiki](https://simp-project.atlassian.net/wiki/display/SD/SIMP+Development+Home)
-
-If you find any issues, they can be submitted to our
-[JIRA](https://simp-project.atlassian.net).
-
-[System Integrity Management Platform](https://simp-project.com)
+Please read our [Contribution Guide](http://simp-doc.readthedocs.io/en/stable/contributors_guide/index.html).

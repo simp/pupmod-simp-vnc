@@ -22,14 +22,11 @@
 # @author https://github.com/simp/pupmod-simp-vnc/graphs/contributors
 #
 define vnc::server::create (
-  Integer $port,
-  String  $geometry            = '800x600',
-  Integer $depth               = 16,
-  Integer $screensaver_timeout = 15
+  Simplib::Port $port,
+  Vnc::Geometry $geometry            = '800x600',
+  Integer       $depth               = 16,
+  Integer       $screensaver_timeout = 15
 ) {
-
-  validate_port($port)
-  validate_re($geometry, '^\d+x\d+$')
 
   include 'xinetd'
 

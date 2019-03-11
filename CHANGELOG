@@ -3,6 +3,7 @@
   Puppet 3 validate_port()
 - Use new Vnc::Geometry data type in lieu of deprecated,
   stdlib validate_re()
+- Updated a URL in the README.md
 
 * Thu Nov 01 2018 Liz Nemsick <lnemsick.simp@gmail.com> - 7.0.0-0
 - Update the contribution guide URL in the README.md

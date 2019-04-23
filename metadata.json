@@ -1,6 +1,6 @@
 {
   "name": "simp-vnc",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "author": "SIMP Team",
   "summary": "Manages VNC",
   "license": "Apache-2.0",

@@ -1,6 +1,6 @@
 {
   "name": "simp-vnc",
-  "version": "7.0.2",
+  "version": "7.1.0",
   "author": "SIMP Team",
   "summary": "Manages VNC",
   "license": "Apache-2.0",
@@ -17,16 +17,8 @@
       "version_requirement": ">= 7.0.0 < 8.0.0"
     },
     {
-      "name": "puppetlabs/inifile",
-      "version_requirement": ">= 3.0.0 < 4.0.0"
-    },
-    {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">= 4.13.1 < 7.0.0"
-    },
-    {
-      "name": "puppetlabs/translate",
-      "version_requirement": ">= 1.0.0 < 3.0.0"
     },
     {
       "name": "simp/simplib",
@@ -63,7 +55,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.10.4 < 7.0.0"
+      "version_requirement": ">= 5.0.0 < 7.0.0"
     }
   ]
 }

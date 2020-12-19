@@ -1,6 +1,6 @@
 {
   "name": "simp-vnc",
-  "version": "7.1.1",
+  "version": "7.1.2",
   "author": "SIMP Team",
   "summary": "Manages VNC",
   "license": "Apache-2.0",
@@ -33,21 +33,18 @@
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
-        "6",
         "7"
       ]
     }

@@ -1,3 +1,6 @@
+* Fri Jan 29 2021 Jeanne Greulich <jeanne.greulich@onyxpoint.com> - 7.1.2
+- Added EL8 support after verifying the module worked on EL8 machines.
+
 * Sat Dec 19 2020 Chris Tessmer <chris.tessmer@onyxpoint.com> - 7.1.2
 - Removed EL6 support
 

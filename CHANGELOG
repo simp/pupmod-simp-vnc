@@ -1,3 +1,7 @@
+* Thu Jun 17 2021 Chris Tessmer <chris.tessmer@onyxpoint.com> - 7.2.0
+- Removed support for Puppet 5
+- Ensured support for Puppet 7 in requirements and stdlib
+
 * Fri Jan 29 2021 Jeanne Greulich <jeanne.greulich@onyxpoint.com> - 7.1.2
 - Added EL8 support after verifying the module worked on EL8 machines.
 

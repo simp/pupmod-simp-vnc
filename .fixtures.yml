@@ -1,11 +1,11 @@
 ---
 fixtures:
   repositories:
-    dconf: https://github.com/simp/pupmod-simp-dconf
-    gdm: https://github.com/simp/pupmod-simp-gdm
-    inifile: https://github.com/puppetlabs/puppetlabs-inifile
-    simplib: https://github.com/simp/pupmod-simp-simplib
-    stdlib: https://github.com/simp/puppetlabs-stdlib
-    xinetd: https://github.com/simp/pupmod-simp-xinetd
+    dconf: https://github.com/simp/pupmod-simp-dconf.git
+    gdm: https://github.com/simp/pupmod-simp-gdm.git
+    inifile: https://github.com/puppetlabs/puppetlabs-inifile.git
+    simplib: https://github.com/simp/pupmod-simp-simplib.git
+    stdlib: https://github.com/simp/puppetlabs-stdlib.git
+    xinetd: https://github.com/simp/pupmod-simp-xinetd.git
   symlinks:
     vnc: "#{source_dir}"

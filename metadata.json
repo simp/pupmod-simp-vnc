@@ -1,6 +1,6 @@
 {
   "name": "simp-vnc",
-  "version": "7.3.0",
+  "version": "7.4.0",
   "author": "SIMP Team",
   "summary": "Manages VNC",
   "license": "Apache-2.0",
@@ -53,6 +53,12 @@
     },
     {
       "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "AlmaLinux",
       "operatingsystemrelease": [
         "8"
       ]

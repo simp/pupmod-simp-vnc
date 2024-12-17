@@ -7,9 +7,9 @@ describe 'vnc::client' do
         facts
       end
 
-      it { should compile.with_all_deps }
-      it { should create_class('vnc::client') }
-      it { should contain_package('tigervnc') }
+      it { is_expected.to compile.with_all_deps }
+      it { is_expected.to create_class('vnc::client') }
+      it { is_expected.to contain_package('tigervnc') }
     end
   end
 end

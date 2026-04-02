@@ -8,6 +8,5 @@ fixtures:
       ref: 'v6.2.0'
     simplib: https://github.com/simp/pupmod-simp-simplib.git
     stdlib: https://github.com/simp/puppetlabs-stdlib.git
-    xinetd: https://github.com/simp/pupmod-simp-xinetd.git
   symlinks:
     vnc: "#{source_dir}"

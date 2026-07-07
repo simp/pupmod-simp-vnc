@@ -17,7 +17,6 @@
 class vnc::server (
   String $package_ensure = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' }),
 ) {
-  include 'xinetd'
   include 'gdm'
 
   # Some useful defaults

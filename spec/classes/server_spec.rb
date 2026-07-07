@@ -8,7 +8,6 @@ describe 'vnc::server' do
       it { is_expected.to compile.with_all_deps }
       it { is_expected.to create_class('vnc::server') }
 
-      it { is_expected.to contain_class('xinetd') }
       it { is_expected.to contain_class('gdm') }
 
       it do

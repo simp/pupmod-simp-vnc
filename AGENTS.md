@@ -8,13 +8,13 @@ This file provides guidance to AI agents when working with code in this reposito
 Enterprise Linux. It has two sides:
 
 - **Server** (`manifests/server.pp`) — installs the `tigervnc-server` package
-  (`server.pp:42-44`), pulls in `xinetd` and `gdm` (`server.pp:20-21`), and
+  (`server.pp`), pulls in `xinetd` and `gdm` (`server.pp`), and
   declares three ready-to-use VNC display instances via the
   `vnc::server::create` define: `vnc_standard` (port 5901, `1024x768`),
   `vnc_lowres` (port 5902, `800x600`), and `vnc_highres` (port 5903,
-  `1280x1024`), all at 16-bit depth (`server.pp:24-40`).
+  `1280x1024`), all at 16-bit depth (`server.pp`).
 - **Client** (`manifests/client.pp`) — installs the `tigervnc` package
-  (`client.pp:10-12`).
+  (`client.pp`).
 
 VNC sessions are **not** run as long-lived daemons. Each session is an
 **`xinetd`-launched, per-connection `Xvnc` process** (hence the hard dependency
@@ -28,58 +28,58 @@ The module has four manifests: one empty entry class, two feature classes, and
 one define. **There is no `assert_private()` anywhere** — all four are
 publicly declarable.
 
-- **`vnc` (`manifests/init.pp:5-7`)** — an **empty no-op class**
+- **`vnc` (`manifests/init.pp`)** — an **empty no-op class**
   (`class vnc { }`); its own docstring says "This does nothing!"
-  (`init.pp:1`). It exists as a namespace anchor; `include 'vnc'` does nothing.
+  (`init.pp`). It exists as a namespace anchor; `include 'vnc'` does nothing.
   Real behaviour lives in `vnc::server` and `vnc::client`.
 
-- **`vnc::server` (`manifests/server.pp:17-45`)** — the server entry class.
+- **`vnc::server` (`manifests/server.pp`)** — the server entry class.
   - `$package_ensure` (`String`) defaults to
     `simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })`
-    (`server.pp:18`) and controls the `tigervnc-server` package
-    (`server.pp:42-44`).
-  - `include 'xinetd'` and `include 'gdm'` (`server.pp:20-21`) — GDM is what
+    (`server.pp`) and controls the `tigervnc-server` package
+    (`server.pp`).
+  - `include 'xinetd'` and `include 'gdm'` (`server.pp`) — GDM is what
     answers the XDMCP query each `Xvnc` makes; without it VNC will not work.
   - Declares three `vnc::server::create` instances with fixed ports/geometries
-    (`server.pp:24-40`).
+    (`server.pp`).
 
-- **`vnc::server::create` (`manifests/server/create.pp:24-49`)** — a
+- **`vnc::server::create` (`manifests/server/create.pp`)** — a
   **defined type** (`define`) that creates one VNC display served through
-  xinetd. Parameters (`create.pp:24-29`):
+  xinetd. Parameters (`create.pp`):
   - `$port` (`Simplib::Port`, **required**) — the TCP port for the session.
   - `$geometry` (`Vnc::Geometry`, default `'800x600'`) — the display resolution.
   - `$depth` (`Integer`, default `16`) — pixel depth in bits.
   - `$screensaver_timeout` (`Integer`, default `15`) — minutes before the
     screensaver disables.
 
-  It `include`s `xinetd` (`create.pp:31`) and declares one
-  `xinetd::service { $name: ... }` (`create.pp:33-47`) that runs
+  It `include`s `xinetd` (`create.pp`) and declares one
+  `xinetd::service { $name: ... }` (`create.pp`) that runs
   `/usr/bin/Xvnc` under user `nobody`, over a TCP stream socket, with
   `x_type => 'UNLISTED'` and `x_wait => 'no'`. The server args
-  (`create.pp:43`) hard-wire `-inetd -localhost -query localhost
+  (`create.pp`) hard-wire `-inetd -localhost -query localhost
   -SecurityTypes None -once -NeverShared`, interpolating `$screensaver_timeout`
   (`-s`), the resource `$name` (`-desktop`), `$geometry`, and `$depth`. Access
-  is restricted to loopback: `trusted_nets => ['127.0.0.1']` (`create.pp:45`).
+  is restricted to loopback: `trusted_nets => ['127.0.0.1']` (`create.pp`).
 
 ### Gotchas / non-obvious details
 
-- **`class vnc` is a no-op.** `include 'vnc'` (`init.pp:5-7`) manages nothing.
+- **`class vnc` is a no-op.** `include 'vnc'` (`init.pp`) manages nothing.
   Consumers must `include 'vnc::server'` and/or `include 'vnc::client'`
   directly.
 - **XDMCP must be enabled in GDM or VNC will not work.** Each `Xvnc` runs with
-  `-query localhost` (`create.pp:43`), so it depends on GDM answering XDMCP.
+  `-query localhost` (`create.pp`), so it depends on GDM answering XDMCP.
   The `vnc::server` docstring instructs setting
   `gdm::settings: { xdmcp: { Enable: true } }` in Hiera
-  (`server.pp:4-11`) — the module does **not** set this for you.
+  (`server.pp`) — the module does **not** set this for you.
 - **VNC here uses no VNC-level authentication.** The `Xvnc` args set
-  `-SecurityTypes None` (`create.pp:43`); the security boundary is instead the
-  xinetd `trusted_nets => ['127.0.0.1']` loopback restriction (`create.pp:45`)
+  `-SecurityTypes None` (`create.pp`); the security boundary is instead the
+  xinetd `trusted_nets => ['127.0.0.1']` loopback restriction (`create.pp`)
   plus `-localhost`. Access is expected via an SSH tunnel, not directly.
 - **`vnc::server`'s three instances have hard-coded ports and geometries**
-  (5901/5902/5903, `server.pp:24-40`). They are not parameterized; to change
+  (5901/5902/5903, `server.pp`). They are not parameterized; to change
   them, declare your own `vnc::server::create` resources instead of relying on
   `vnc::server`.
-- **`Vnc::Geometry` is a strict `WxH` pattern.** `types/geometry.pp:1` defines
+- **`Vnc::Geometry` is a strict `WxH` pattern.** `types/geometry.pp` defines
   it as `Pattern['^\d+x\d+$']` — digits, a literal lowercase `x`, digits, and
   nothing else. `'1024x768'` matches; `'1024X768'`, `'1024 x 768'`, or a
   trailing depth like `'1024x768x16'` do **not**.
@@ -99,8 +99,8 @@ both feature classes with the same shape:
 
 | Location | Key | `default_value` |
 |----------|-----|-----------------|
-| `server.pp:18` | `simp_options::package_ensure` | `'installed'` |
-| `client.pp:8` | `simp_options::package_ensure` | `'installed'` |
+| `server.pp` | `simp_options::package_ensure` | `'installed'` |
+| `client.pp` | `simp_options::package_ensure` | `'installed'` |
 
 Keep routing package state through `simplib::lookup('simp_options::package_ensure',
 { 'default_value' => 'installed' })` rather than assuming `simp_options` is
@@ -111,12 +111,12 @@ included.
 Module dependencies (from `metadata.json`), all **hard** runtime deps:
 
 - `simp/gdm` `>= 7.0.0 < 9.0.0` — the graphical login stack that answers the
-  `Xvnc -query localhost` XDMCP request (`metadata.json:15-18`).
-- `puppetlabs/stdlib` `>= 8.0.0 < 10.0.0` (`metadata.json:19-22`).
+  `Xvnc -query localhost` XDMCP request (`metadata.json`).
+- `puppetlabs/stdlib` `>= 8.0.0 < 10.0.0` (`metadata.json`).
 - `simp/simplib` `>= 4.9.0 < 6.0.0` — provides `simplib::lookup` and the
-  `Simplib::Port` type used by `vnc::server::create` (`metadata.json:23-26`).
+  `Simplib::Port` type used by `vnc::server::create` (`metadata.json`).
 - `simp/xinetd` `>= 4.0.0 < 5.0.0` — provides the `xinetd::service` define that
-  launches each `Xvnc` (`metadata.json:27-30`).
+  launches each `Xvnc` (`metadata.json`).
 
 There are **no optional dependencies** (`metadata.json` has no
 `simp.optional_dependencies` block).
@@ -125,12 +125,12 @@ Fixture-only dependencies (from `.fixtures.yml`, present for test compilation,
 not runtime deps): `dconf`, `inifile` (pinned `v6.2.0`) — plus the runtime deps
 above are also checked out as fixtures.
 
-Runtime requirement (from `metadata.json:73-78`): **`openvox >= 8.0.0 < 9.0.0`**.
+Runtime requirement (from `metadata.json`): **`openvox >= 8.0.0 < 9.0.0`**.
 This module has migrated its baseline from Puppet to **OpenVox**; the `Gemfile`
 reflects the transitional shim (see below). Update this line only if
 `metadata.json` `requirements` changes.
 
-Supported OS matrix (from `metadata.json:32-72`): CentOS 9/10; RedHat 8/9/10;
+Supported OS matrix (from `metadata.json`): CentOS 9/10; RedHat 8/9/10;
 OracleLinux 8/9/10; Rocky 8/9/10; AlmaLinux 8/9/10.
 
 ## Repository layout
@@ -147,7 +147,7 @@ OracleLinux 8/9/10; Rocky 8/9/10; AlmaLinux 8/9/10.
   unit tests for the two feature classes.
 - `spec/defines/server_create_spec.rb` — unit tests for the define.
 - `spec/type_aliases/vnc_geometry_spec.rb` — tests for the `Vnc::Geometry` type.
-- `spec/spec_helper.rb` — unit test harness (`require` line at `spec_helper.rb:11`).
+- `spec/spec_helper.rb` — unit test harness (`require` line at `spec_helper.rb`).
 - `spec/spec_helper_acceptance.rb` — present, but see the CI note: there are no
   acceptance suites or nodesets to drive it.
 - `REFERENCE.md` — generated Puppet Strings reference.
@@ -169,7 +169,7 @@ metadata_lint`), `ruby-style` (`rake rubocop`, `continue-on-error`),
   workflow has no `acceptance` job. It is **unit-tests-only**.
 - The `spec-tests` job uses a per-job Puppet matrix (currently a single entry:
   Puppet 8.x, `PUPPET_VERSION: '~> 8.0'`, Ruby 3.2); there is no global
-  `PUPPET_VERSION` env at the workflow level (`pr_tests.yml:91-114`).
+  `PUPPET_VERSION` env at the workflow level (`pr_tests.yml`).
 
 ## Common commands
 
@@ -196,13 +196,13 @@ bundle exec rake rubocop
 puppet strings generate --format markdown --out REFERENCE.md
 ```
 
-Relevant gem pins (from `Gemfile`): `rubocop ~> 1.88.0` (`Gemfile:16`),
-`puppetlabs_spec_helper ~> 8.0.0` (`Gemfile:33`), `simp-rake-helpers ~> 5.24.0`
-(`Gemfile:39`), `simp-beaker-helpers ~> 2.0.0` (`Gemfile:56`).
+Relevant gem pins (from `Gemfile`): `rubocop ~> 1.88.0` (`Gemfile`),
+`puppetlabs_spec_helper ~> 8.0.0` (`Gemfile`), `simp-rake-helpers ~> 5.24.0`
+(`Gemfile`), `simp-beaker-helpers ~> 2.0.0` (`Gemfile`).
 
 **OpenVox transitional shim:** the `:test` group defaults `puppet_version` to
-`['>= 8', '< 9']` (`Gemfile:23`) and then installs **both** the `openvox` and
-`puppet` gems via `['openvox', 'puppet'].each do |gem_name|` (`Gemfile:30-32`).
+`['>= 8', '< 9']` (`Gemfile`) and then installs **both** the `openvox` and
+`puppet` gems via `['openvox', 'puppet'].each do |gem_name|` (`Gemfile`).
 The comment explains this is temporary "until the puppet dependency is removed
 from other gems." Do not remove either gem until that upstream cleanup lands.
 

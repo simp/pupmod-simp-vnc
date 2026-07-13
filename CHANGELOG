@@ -1,3 +1,6 @@
+* Thu Jul 09 2026 Steven Pritchard <steve@sicura.us> - 8.0.1
+- Resolved puppet-lint manifest whitespace offenses
+
 * Mon Jun 08 2026 Steven Pritchard <steven.pritchard@gmail.com> - 8.0.0
 - Switch `requirements` from `puppet` to `openvox` (>= 8 < 9)
 - Point `issues_url` at GitHub Issues
@@ -71,7 +74,7 @@
 * Thu Jul 06 2017 Liz Nemsick <lnemsick.simp@gmail.com> - 6.0.2-0
 - Confine puppet version in metadata.json
 
-* Wed Jan 02 2017 Chris Tessmer <chris.tessmer@onyxpoint.com> - 6.0.1-0
+* Mon Jan 02 2017 Chris Tessmer <chris.tessmer@onyxpoint.com> - 6.0.1-0
 - Removed unecessary code and deps after major dep releases
 - Locked versions of all build and test deps
 

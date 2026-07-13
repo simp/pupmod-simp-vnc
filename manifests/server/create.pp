@@ -27,7 +27,6 @@ define vnc::server::create (
   Integer       $depth               = 16,
   Integer       $screensaver_timeout = 15
 ) {
-
   include 'xinetd'
 
   xinetd::service { $name:
@@ -45,5 +44,4 @@ define vnc::server::create (
     trusted_nets   => ['127.0.0.1'],
     port           => $port
   }
-
 }

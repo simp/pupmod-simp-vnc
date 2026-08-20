@@ -9,4 +9,3 @@ fixtures:
     simplib: https://github.com/simp/pupmod-simp-simplib.git
     stdlib: https://github.com/simp/puppetlabs-stdlib.git
     tuned: https://github.com/simp/pupmod-simp-tuned.git
-    xinetd: https://github.com/simp/pupmod-simp-xinetd.git

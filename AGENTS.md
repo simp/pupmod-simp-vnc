@@ -122,7 +122,7 @@ There are **no optional dependencies** (`metadata.json` has no
 `simp.optional_dependencies` block).
 
 Fixture-only dependencies (from `.fixtures.yml`, present for test compilation,
-not runtime deps): `dconf`, `inifile` (pinned `v6.2.0`) — plus the runtime deps
+not runtime deps): `dconf`, `inifile` — plus the runtime deps
 above are also checked out as fixtures.
 
 Runtime requirement (from `metadata.json`): **`openvox >= 8.0.0 < 9.0.0`**.

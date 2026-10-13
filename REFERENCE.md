@@ -52,7 +52,7 @@ work without it.
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 ---
@@ -85,7 +85,7 @@ Desktop gets set to 'name'.
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 vnc::server::create { 'vnc_default':
@@ -139,4 +139,3 @@ Default value: `15`
 The Vnc::Geometry data type.
 
 Alias of `Pattern['^\d+x\d+$']`
-

@@ -8,11 +8,11 @@
 
 * [`vnc`](#vnc): This does nothing!
 * [`vnc::client`](#vnc--client): Makes sure the latests vnc package is installed.
-* [`vnc::server`](#vnc--server): Installs vnc-server, includes GDM for configuration, and sets up some default vnc sessions.  NOTE: You *MUST* set the following in Hiera to e
+* [`vnc::server`](#vnc--server): Installs vnc-server, includes GDM for configuration, and sets up some default vnc sessions as systemd sockets on the loopback address.  NOTE:
 
 ### Defined types
 
-* [`vnc::server::create`](#vnc--server--create): Create a new VNC Server Session  Desktop gets set to 'name'.
+* [`vnc::server::create`](#vnc--server--create): Create a new VNC Server Session  Each session is a systemd socket, `${name}.socket`, listening on `127.0.0.1:${port}`. Every connection start
 
 ### Data types
 
@@ -45,14 +45,14 @@ Default value: `simplib::lookup('simp_options::package_ensure', { 'default_value
 ### <a name="vnc--server"></a>`vnc::server`
 
 Installs vnc-server, includes GDM for configuration, and sets up some default
-vnc sessions.
+vnc sessions as systemd sockets on the loopback address.
 
 NOTE: You *MUST* set the following in Hiera to enable XDMCP. VNC will not
 work without it.
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 ---
@@ -81,11 +81,17 @@ Default value: `simplib::lookup('simp_options::package_ensure', { 'default_value
 
 Create a new VNC Server Session
 
-Desktop gets set to 'name'.
+Each session is a systemd socket, `${name}.socket`, listening on
+`127.0.0.1:${port}`. Every connection starts a new `Xvnc -inetd` instance
+from the templated `${name}@.service` unit, running as `nobody`, which
+queries the local display manager over XDMCP.
+
+Desktop gets set to 'name', which must also be a valid systemd unit name
+prefix.
 
 #### Examples
 
-##### 
+#####
 
 ```puppet
 vnc::server::create { 'vnc_default':
@@ -106,7 +112,8 @@ The following parameters are available in the `vnc::server::create` defined type
 
 Data type: `Simplib::Port`
 
-Port on which you wish to enable the VNC session
+Port on which you wish to enable the VNC session. The socket only listens
+on the loopback address.
 
 ##### <a name="-vnc--server--create--geometry"></a>`geometry`
 
@@ -139,4 +146,3 @@ Default value: `15`
 The Vnc::Geometry data type.
 
 Alias of `Pattern['^\d+x\d+$']`
-

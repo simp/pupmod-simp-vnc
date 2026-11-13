@@ -1,3 +1,19 @@
+* Fri Nov 13 2026 Steven Pritchard <steve@sicura.us> - 9.0.0
+- BREAKING: `vnc::server::create` runs each session from a systemd socket
+  (`<name>.socket` on `127.0.0.1:<port>`, with a per-connection
+  `<name>@.service`) instead of an xinetd service, and `simp/xinetd` is no
+  longer a dependency. The module no longer manages `/etc/xinetd.d/<name>`:
+  remove those entries and reload xinetd before upgrading, or the sockets
+  can't bind their ports
+- Add a dependency on `puppet/systemd`
+
+* Thu Oct 08 2026 Steven Pritchard <steve@sicura.us> - 8.1.0
+- Add support for OpenVox 9
+- Update metadata.json dependency ranges from the Forge
+
+* Mon Aug 24 2026 Steven Pritchard <steve@sicura.us> - 8.0.2
+- [puppetsync] Update metadata.json dependency ranges from the Forge
+
 * Thu Jul 09 2026 Steven Pritchard <steve@sicura.us> - 8.0.1
 - Resolved puppet-lint manifest whitespace offenses
 

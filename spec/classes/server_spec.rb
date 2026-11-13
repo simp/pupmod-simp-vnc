@@ -8,7 +8,7 @@ describe 'vnc::server' do
       it { is_expected.to compile.with_all_deps }
       it { is_expected.to create_class('vnc::server') }
 
-      it { is_expected.to contain_class('xinetd') }
+      it { is_expected.not_to contain_class('xinetd') }
       it { is_expected.to contain_class('gdm') }
 
       it do
@@ -37,6 +37,13 @@ describe 'vnc::server' do
       end
 
       it { is_expected.to contain_package('tigervnc-server') }
+
+      ['vnc_standard', 'vnc_lowres', 'vnc_highres'].each do |session|
+        it { is_expected.to contain_vnc__server__create(session).that_requires('Package[tigervnc-server]') }
+        it { is_expected.to contain_systemd__unit_file("#{session}.socket") }
+      end
+
+      it { is_expected.to contain_systemd__unit_file('vnc_standard.socket').with_content(%r{^ListenStream=127\.0\.0\.1:5901$}) }
     end
   end
 end

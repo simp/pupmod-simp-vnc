@@ -1,5 +1,5 @@
 # Installs vnc-server, includes GDM for configuration, and sets up some default
-# vnc sessions.
+# vnc sessions as systemd sockets on the loopback address.
 #
 # NOTE: You *MUST* set the following in Hiera to enable XDMCP. VNC will not
 # work without it.
@@ -17,7 +17,6 @@
 class vnc::server (
   String $package_ensure = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' }),
 ) {
-  include 'xinetd'
   include 'gdm'
 
   # Some useful defaults
@@ -42,4 +41,6 @@ class vnc::server (
   package { 'tigervnc-server':
     ensure => $package_ensure
   }
+
+  Package['tigervnc-server'] -> Vnc::Server::Create <| |>
 }

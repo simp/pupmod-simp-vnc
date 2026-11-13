@@ -15,7 +15,7 @@ group :syntax do
   # voxpupuli-test (via simp-rake-helpers); pinning them here conflicts with its
   # constraints. rubocop-performance is not a voxpupuli-test dependency, so it
   # stays explicit.
-  gem 'rubocop-performance', '~> 1.26.0'
+  gem 'rubocop-performance', '~> 1.27.0'
 end
 
 group :test do
@@ -32,6 +32,9 @@ group :test do
   # renovate: datasource=rubygems versioning=ruby
   gem 'simp-rspec-puppet-facts', ENV.fetch('SIMP_RSPEC_PUPPET_FACTS_VERSION', '~> 4.0.0')
   gem 'syslog', require: false
+  # openvox 8 accepts openfact 6, which no OpenVox 8 AIO agent ships; CI pins
+  # the openfact each agent release actually ships with OPENFACT_VERSION
+  gem 'openfact', ENV.fetch('OPENFACT_VERSION', '>= 5')
 end
 
 group :development do

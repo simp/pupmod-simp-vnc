@@ -1,0 +1,16 @@
+<%- |
+  String[1]     $desktop,
+  Simplib::Port $port,
+| -%>
+# This file is managed by Puppet (simp-vnc module). Changes will be overwritten
+# at the next puppet run.
+
+[Unit]
+Description=Xvnc session <%= $desktop %> listener
+
+[Socket]
+ListenStream=127.0.0.1:<%= $port %>
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

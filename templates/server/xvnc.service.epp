@@ -1,0 +1,15 @@
+<%- |
+  String[1] $desktop,
+  String[1] $server_args,
+| -%>
+# This file is managed by Puppet (simp-vnc module). Changes will be overwritten
+# at the next puppet run.
+
+[Unit]
+Description=Xvnc session <%= $desktop %> (per connection)
+
+[Service]
+ExecStart=-/usr/bin/Xvnc <%= $server_args %>
+User=nobody
+StandardInput=socket
+StandardError=journal

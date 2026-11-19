@@ -6,6 +6,9 @@
   remove those entries and reload xinetd before upgrading, or the sockets
   can't bind their ports
 - Add a dependency on `puppet/systemd`
+- BREAKING: Drop EL10 from the supported releases. EL10 ships no TigerVNC
+  server or client (`tigervnc-server`, `Xvnc` and `vncviewer` are gone from
+  BaseOS, AppStream and EPEL)
 
 * Thu Oct 08 2026 Steven Pritchard <steve@sicura.us> - 8.1.0
 - Add support for OpenVox 9

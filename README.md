@@ -44,6 +44,8 @@ Before upgrading, remove the old `vnc_*` (or your own `vnc::server::create`)
 entries from `/etc/xinetd.d/` and reload or stop xinetd, or the new sockets
 can't bind their ports.
 
+EL10 is no longer supported. It ships no TigerVNC server or client.
+
 ### Beginning with VNC
 
 #### Client Installation

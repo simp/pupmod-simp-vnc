@@ -136,8 +136,8 @@ This module has migrated its baseline from Puppet to **OpenVox**; the `Gemfile`
 reflects the transitional shim (see below). Update this line only if
 `metadata.json` `requirements` changes.
 
-Supported OS matrix (from `metadata.json`): CentOS 9/10; RedHat 8/9/10;
-OracleLinux 8/9/10; Rocky 8/9/10; AlmaLinux 8/9/10.
+For the supported OS matrix, see `metadata.json`. EL10 is not supported: it
+ships no TigerVNC server or client.
 
 ## Repository layout
 

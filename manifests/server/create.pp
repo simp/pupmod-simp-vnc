@@ -1,9 +1,16 @@
 # Create a new VNC Server Session
 #
-# Desktop gets set to 'name'.
+# Each session is a systemd socket, `${name}.socket`, listening on
+# `127.0.0.1:${port}`. Every connection starts a new `Xvnc -inetd` instance
+# from the templated `${name}@.service` unit, running as `nobody`, which
+# queries the local display manager over XDMCP.
+#
+# Desktop gets set to 'name', which must also be a valid systemd unit name
+# prefix.
 #
 # @param port
-#   Port on which you wish to enable the VNC session
+#   Port on which you wish to enable the VNC session. The socket only listens
+#   on the loopback address.
 #
 # @param geometry
 #   Resolution of your VNC session
@@ -27,21 +34,34 @@ define vnc::server::create (
   Integer       $depth               = 16,
   Integer       $screensaver_timeout = 15
 ) {
-  include 'xinetd'
+  $_server_args = [
+    '-inetd',
+    '-localhost',
+    '-audit 4',
+    "-s ${screensaver_timeout}",
+    '-query localhost',
+    '-NeverShared',
+    '-once',
+    '-SecurityTypes None',
+    "-desktop ${name}",
+    "-geometry ${geometry}",
+    "-depth ${depth}",
+  ].join(' ')
 
-  xinetd::service { $name:
-    banner         => '/dev/null',
-    flags          => ['REUSE','IPv4'],
-    protocol       => 'tcp',
-    socket_type    => 'stream',
-    x_wait         => 'no',
-    x_type         => 'UNLISTED',
-    log_on_success => ['HOST', 'PID', 'DURATION'],
-    user           => 'nobody',
-    server         => '/usr/bin/Xvnc',
-    server_args    => "-inetd -localhost -audit 4 -s ${screensaver_timeout} -query localhost -NeverShared -once -SecurityTypes None -desktop ${name} -geometry ${geometry} -depth ${depth}",
-    disable        => 'no',
-    trusted_nets   => ['127.0.0.1'],
-    port           => $port
+  systemd::unit_file { "${name}@.service":
+    content => epp('vnc/server/xvnc.service.epp', {
+        'desktop'     => $name,
+        'server_args' => $_server_args,
+    }),
+  }
+
+  systemd::unit_file { "${name}.socket":
+    enable  => true,
+    active  => true,
+    content => epp('vnc/server/xvnc.socket.epp', {
+        'desktop' => $name,
+        'port'    => $port,
+    }),
+    require => Systemd::Unit_file["${name}@.service"],
   }
 }

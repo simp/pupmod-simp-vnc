@@ -31,6 +31,21 @@ Ports used by default for VNC Server:
 * 5902 (800x600)
 * 5903 (1280x1024)
 
+Each VNC session is a systemd socket, `<name>.socket`, listening on
+`127.0.0.1:<port>` only. Every connection starts a new `Xvnc -inetd` instance
+from the templated `<name>@.service` unit, running as `nobody`. Connect through
+an SSH tunnel.
+
+## Breaking changes in 9.0.0
+
+`simp/xinetd` is no longer used. Sessions that were xinetd services are now
+systemd sockets, and the module no longer manages `/etc/xinetd.d/<name>`.
+Before upgrading, remove the old `vnc_*` (or your own `vnc::server::create`)
+entries from `/etc/xinetd.d/` and reload or stop xinetd, or the new sockets
+can't bind their ports.
+
+EL10 is no longer supported. It ships no TigerVNC server or client.
+
 ### Beginning with VNC
 
 #### Client Installation

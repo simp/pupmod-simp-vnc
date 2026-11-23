@@ -1,3 +1,7 @@
+* Mon Nov 23 2026 Hazel Caballero <hazel@sicura.us> - 9.0.1
+- Documented in the README that `vnc::server::create` titles must be valid
+  systemd unit name prefixes
+
 * Fri Nov 13 2026 Steven Pritchard <steve@sicura.us> - 9.0.0
 - BREAKING: `vnc::server::create` runs each session from a systemd socket
   (`<name>.socket` on `127.0.0.1:<port>`, with a per-connection

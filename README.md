@@ -44,6 +44,13 @@ Before upgrading, remove the old `vnc_*` (or your own `vnc::server::create`)
 entries from `/etc/xinetd.d/` and reload or stop xinetd, or the new sockets
 can't bind their ports.
 
+Each `vnc::server::create` title is now the prefix of a systemd unit name
+(`<title>.socket` and `<title>@.service`), so it may only contain letters,
+digits, `:`, `-`, `_`, `.` and `\`. A title that was a valid xinetd service
+name but has other characters compiles and then fails when the unit is
+loaded. Rename it before upgrading: for example, `review+vnc` becomes
+`review_vnc`.
+
 EL10 is no longer supported. It ships no TigerVNC server or client.
 
 ### Beginning with VNC
